@@ -11,27 +11,30 @@ def load_data():
     return pd.read_pickle('data/xg_data.pkl')
 
 
+def get_random_position(df):
+    return random.randint(0, len(df))
+
+
+def init_state():
+    st.session_state['game_state'] = 'guess'
+    st.session_state['index'] = get_random_position(df)
+    st.session_state['player_win'] = 50
+    st.session_state['player_g'] = 0
+    st.session_state['opponent_g'] = 0
+
+
 def show_answer():
     st.session_state['game_state'] = 'review'
 
 
 def next_position(df):
-    st.session_state['game_state'] = 'guess'
-    st.session_state.index = get_random_position(df)
-
-
-def get_random_position(df):
-    return random.randint(0, len(df))
+    init_state()
 
 
 df = load_data()
 
 if 'game_state' not in st.session_state:
-    st.session_state['game_state'] = 'guess'
-
-if 'index' not in st.session_state:
-    # set initial index randomly
-    st.session_state['index'] = get_random_position(df)
+    init_state()
 
 row = df.iloc[st.session_state['index']].copy()  # Make a copy of the row
 if row['ActiveP'] == -1:
