@@ -46,10 +46,17 @@ entry = {
 streamlit_backgammon(entry=entry, key='board')
 
 # user will input the win/gammon percentages
-player_win = st.slider('Player Win', 0, 100, 50, format='%d%%')
-player_g = st.slider('Player Gammon', 0, 100, format='%d%%')
-opponent_g = st.slider('Opponent Gammon', 0, 100, format='%d%%')
-draw_estimate_chart(player_win, player_g, opponent_g)
+if st.session_state['game_state'] == 'guess':
+    st.session_state['player_win'] = st.slider(
+        'Player Win', 0, 100, 50, format='%d%%')
+    st.session_state['player_g'] = st.slider(
+        'Player Gammon', 0, 100, format='%d%%')
+    st.session_state['opponent_g'] = st.slider(
+        'Opponent Gammon', 0, 100, format='%d%%')
+
+st.write('Your guess')
+draw_estimate_chart(st.session_state['player_win'],
+                    st.session_state['player_g'], st.session_state['opponent_g'])
 
 if st.session_state['game_state'] == 'guess':
     st.button('Guess', on_click=show_answer)
