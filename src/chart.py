@@ -18,7 +18,8 @@ def draw_chart(x_axis, y_axis, row):
         orientation='h',
         marker=dict(
             color="#308FB8"
-        )
+        ),
+        hoverinfo='skip'
     ))
     # Player G
     fig.add_trace(go.Bar(
@@ -28,7 +29,8 @@ def draw_chart(x_axis, y_axis, row):
         orientation='h',
         marker=dict(
             color="#5fb2d5"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=row[x_axis][5] + (row[x_axis][4] - row[x_axis][5]) / 2,
@@ -45,7 +47,8 @@ def draw_chart(x_axis, y_axis, row):
         orientation='h',
         marker=dict(
             color="#9ccfe5"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=row[x_axis][4] + (row[x_axis][3] - row[x_axis][4]) / 2,
@@ -62,7 +65,8 @@ def draw_chart(x_axis, y_axis, row):
         orientation='h',
         marker=dict(
             color="#d7eadc"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=row[x_axis][3] + (row[x_axis][2] - row[x_axis][1]) / 2,
@@ -79,7 +83,8 @@ def draw_chart(x_axis, y_axis, row):
         orientation='h',
         marker=dict(
             color="#a4d1b0"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=row[x_axis][3] + (row[x_axis][2] - row[x_axis][1]) +
@@ -97,7 +102,8 @@ def draw_chart(x_axis, y_axis, row):
         orientation='h',
         marker=dict(
             color="#71B784"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.update_xaxes(visible=False, range=[0, 1])
     fig.update_yaxes(visible=False)
@@ -116,7 +122,8 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
         orientation='h',
         marker=dict(
             color="#5fb2d5"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=player_g / 2,
@@ -133,7 +140,8 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
         orientation='h',
         marker=dict(
             color="#9ccfe5"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=player_g + (player_win - player_g) / 2,
@@ -150,7 +158,8 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
         orientation='h',
         marker=dict(
             color="#d7eadc"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=player_win + (100 - player_win - opponent_g) / 2,
@@ -167,7 +176,8 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
         orientation='h',
         marker=dict(
             color="#a4d1b0"
-        )
+        ),
+        hoverinfo='skip'
     ))
     fig.add_annotation(
         x=player_win + (100 - player_win - opponent_g) + opponent_g / 2,
