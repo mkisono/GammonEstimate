@@ -18,9 +18,6 @@ def get_random_position(df):
 def init_state():
     st.session_state['game_state'] = 'guess'
     st.session_state['index'] = get_random_position(df)
-    st.session_state['player_win'] = 50
-    st.session_state['player_g'] = 0
-    st.session_state['opponent_g'] = 0
 
 
 def show_answer():
@@ -50,12 +47,9 @@ streamlit_backgammon(entry=entry, key='board')
 
 # user will input the win/gammon percentages
 if st.session_state['game_state'] == 'guess':
-    st.session_state['player_win'] = st.slider(
-        'Player Win', 0, 100, 50, format='%d%%')
-    st.session_state['player_g'] = st.slider(
-        'Player Gammon', 0, 100, format='%d%%')
-    st.session_state['opponent_g'] = st.slider(
-        'Opponent Gammon', 0, 100, format='%d%%')
+    st.slider('Player Win', 0, 100, 50, format='%d%%', key='player_win')
+    st.slider('Player Gammon', 0, 100, format='%d%%', key='player_g')
+    st.slider('Opponent Gammon', 0, 100, format='%d%%', key='opponent_g')
 
 st.write('Your guess')
 draw_estimate_chart(st.session_state['player_win'],
