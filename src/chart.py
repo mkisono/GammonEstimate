@@ -7,7 +7,7 @@ font = dict(
 )
 
 config = {'displayModeBar': False}
-
+height = 60
 
 def _add_trace(fig, x_axis, y_axis, name, color):
     fig.add_trace(go.Bar(
@@ -61,7 +61,7 @@ def draw_chart(x_axis, y_axis, row):
 
     fig.update_xaxes(visible=False, range=[0, 1])
     fig.update_yaxes(visible=False)
-    fig.update_layout(barmode='stack', height=100, margin=dict(
+    fig.update_layout(barmode='stack', height=height, margin=dict(
         l=0, r=0, b=0, t=0), showlegend=False)
     st.plotly_chart(fig, use_container_width=True, config=config)
 
@@ -87,6 +87,6 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
 
     fig.update_xaxes(visible=False, range=[0, 100])
     fig.update_yaxes(visible=False)
-    fig.update_layout(barmode='stack', height=100, margin=dict(
+    fig.update_layout(barmode='stack', height=height, margin=dict(
         l=0, r=0, b=0, t=0), showlegend=False)
     st.plotly_chart(fig, use_container_width=True, config=config)
