@@ -6,6 +6,7 @@ font = dict(
     color="rgb(49, 51, 63)"
 )
 
+config = {'displayModeBar': False}
 
 def draw_chart(x_axis, y_axis, row):
     fig = go.Figure()
@@ -102,7 +103,7 @@ def draw_chart(x_axis, y_axis, row):
     fig.update_yaxes(visible=False)
     fig.update_layout(barmode='stack', height=100, margin=dict(
         l=0, r=0, b=0, t=0), showlegend=False)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, config=config)
 
 
 def draw_estimate_chart(player_win, player_g, opponent_g):
@@ -179,4 +180,4 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
     fig.update_yaxes(visible=False)
     fig.update_layout(barmode='stack', height=100, margin=dict(
         l=0, r=0, b=0, t=0), showlegend=False)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True, config=config)
