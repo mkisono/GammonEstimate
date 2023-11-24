@@ -74,9 +74,9 @@ if st.session_state['game_state'] == 'review':
         st.write('Cubeless Equity:  ', f"{row['Doubled_EvalDouble'][6]:.3f}")
     st.write('Cubuful Equities')
     equities = [
-        ['No double', row['Doubled_equB']],
-        ['Double/Take', row['Doubled_equDouble']],
-        ['Double/Pass', row['Doubled_equDrop']]
+        ['No double', f"{row['Doubled_equB']: .3f}"],
+        ['Double/Take', f"{row['Doubled_equDouble']: .3f}"],
+        ['Double/Pass', f"{row['Doubled_equDrop']: .3f}"]
     ]
     df_equities = pd.DataFrame(equities, columns=['Action', 'Equity'])
     df_equities.set_index('Action', inplace=True)
