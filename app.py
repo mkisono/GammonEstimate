@@ -59,7 +59,7 @@ draw_estimate_chart(st.session_state['player_win'],
                     st.session_state['player_g'], st.session_state['opponent_g'])
 
 if st.session_state['game_state'] == 'guess':
-    st.button('Guess', on_click=show_answer)
+    st.button('Guess', on_click=show_answer, type='primary')
 
 if st.session_state['game_state'] == 'review':
     tab_nd, tab_td = st.tabs(['No Double', 'Double/Take'])
@@ -78,6 +78,6 @@ if st.session_state['game_state'] == 'review':
     df_equities = pd.DataFrame(equities, columns=['Action', 'Equity'])
     df_equities.set_index('Action', inplace=True)
     st.table(df_equities)
-    st.button('Next', on_click=next_position, args=(df,))
+    st.button('Next', on_click=next_position, args=(df,), type='primary')
 
 # st.dataframe(row, width=1000)
