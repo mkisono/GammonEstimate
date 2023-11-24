@@ -6,8 +6,9 @@ font = dict(
     color="rgb(49, 51, 63)"
 )
 
-config = {'displayModeBar': False}
+config = {'displayModeBar': False, 'staticPlot': True}
 height = 60
+
 
 def _add_trace(fig, x_axis, y_axis, name, color):
     fig.add_trace(go.Bar(
