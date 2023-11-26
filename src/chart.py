@@ -69,13 +69,6 @@ def draw_chart(x_axis, y_axis, row):
     _add_trace(fig, row[x_axis][0], y_axis, 'opponent_bg', '#71B784')
 
     _show_chart(fig, [0, 1])
-    # fig.update_xaxes(visible=False, range=[0, 1])
-    # fig.update_yaxes(visible=False)
-    # fig.update_layout(barmode='stack', height=height, margin=dict(
-    #     l=0, r=0, b=0, t=0), showlegend=False)
-    # _, chart , _ = st.columns([1, 8, 1])
-    # with chart:
-    #     st.plotly_chart(fig, use_container_width=True, config=config)
 
 
 def draw_estimate_chart(player_win, player_g, opponent_g):
@@ -98,11 +91,3 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
                     opponent_g) + opponent_g / 2, 0, f"{opponent_g}%")
 
     _show_chart(fig, [0, 100])
-
-    # fig.update_xaxes(visible=False, range=[0, 100])
-    # fig.update_yaxes(visible=False)
-    # fig.update_layout(barmode='stack', height=height, margin=dict(
-    #     l=0, r=0, b=0, t=0), showlegend=False)
-    # _, chart , _ = st.columns([1, 8, 1])
-    # with chart:
-    #     st.plotly_chart(fig, use_container_width=True, config=config)
