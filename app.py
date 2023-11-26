@@ -28,6 +28,16 @@ def next_position(df):
     init_state()
 
 
+def estimate_rate(name, label, value):
+    def update_state():
+        st.session_state[name] = st.session_state[f'{name}_input']
+    st.slider(label, 0, 100, value, format='%d%%',
+              key=name, label_visibility='visible')
+    st.number_input(
+        label, 0, 100, st.session_state[name], key=f'{name}_input',
+        on_change=update_state, label_visibility='hidden')
+
+
 df = load_data()
 
 if 'game_state' not in st.session_state:
@@ -47,11 +57,11 @@ streamlit_backgammon(entry=entry, key='board')
 
 # user will input the win/gammon percentages
 if st.session_state['game_state'] == 'guess':
-    st.slider('Player Win', 0, 100, 50, format='%d%%', key='player_win')
-    st.slider('Player Gammon', 0, 100, format='%d%%', key='player_g')
-    st.slider('Opponent Gammon', 0, 100, format='%d%%', key='opponent_g')
+    with st.expander('Your guess', expanded=True):
+        estimate_rate('player_win', 'Player Win', 50)
+        estimate_rate('player_g', 'Player Gammon', 0)
+        estimate_rate('opponent_g', 'Opponent Gammon', 0)
 
-st.write('Your guess')
 draw_estimate_chart(st.session_state['player_win'],
                     st.session_state['player_g'], st.session_state['opponent_g'])
 
