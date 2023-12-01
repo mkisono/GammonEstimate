@@ -2,3 +2,4 @@ pandas
 plotly
 matplotlib
 streamlit-backgammon
+slider-with-buttons
