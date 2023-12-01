@@ -4,6 +4,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 from backgammon import streamlit_backgammon
+from slider_with_buttons import slider
 from src.chart import draw_estimate_chart, draw_chart
 from src.param import get_id
 
@@ -19,6 +20,9 @@ def get_random_position(df):
 
 def init_state(df):
     st.session_state['game_state'] = 'guess'
+    st.session_state['player_win'] = 50
+    st.session_state['player_g'] = 0
+    st.session_state['opponent_g'] = 0
     query_params = st.experimental_get_query_params()
     position_id = get_id(query_params, len(df))
     if position_id is not None:
@@ -40,13 +44,7 @@ def next_position(df):
 
 
 def estimate_rate(name, label, value):
-    def update_state():
-        st.session_state[name] = st.session_state[f'{name}_input']
-    st.slider(label, 0, 100, value, format='%d%%',
-              key=name, label_visibility='visible')
-    st.number_input(
-        label, 0, 100, st.session_state[name], key=f'{name}_input',
-        on_change=update_state, label_visibility='hidden')
+    st.session_state[name] = slider(label, value)
 
 
 st.set_page_config(
@@ -74,9 +72,9 @@ streamlit_backgammon(entry=entry, key='board')
 # user will input the win/gammon percentages
 if st.session_state['game_state'] == 'guess':
     with st.expander('Your guess', expanded=True):
-        estimate_rate('player_win', 'Player Win', 50)
-        estimate_rate('player_g', 'Player Gammon', 0)
-        estimate_rate('opponent_g', 'Opponent Gammon', 0)
+        estimate_rate('player_win', 'Player Win %', 50)
+        estimate_rate('player_g', 'Player Gammon %', 0)
+        estimate_rate('opponent_g', 'Opponent Gammon %', 0)
 
 draw_estimate_chart(st.session_state['player_win'],
                     st.session_state['player_g'], st.session_state['opponent_g'])
