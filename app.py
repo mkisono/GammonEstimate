@@ -49,6 +49,11 @@ def estimate_rate(name, label, value):
         on_change=update_state, label_visibility='hidden')
 
 
+st.set_page_config(
+    page_title='Gammon Estimate',
+    page_icon=':game_die:'
+)
+
 df = load_data()
 
 if 'game_state' not in st.session_state:
