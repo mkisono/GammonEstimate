@@ -1311,6 +1311,23 @@ files = [
 ]
 
 [[package]]
+name = "slider-with-buttons"
+version = "0.0.1"
+description = "Streamlit component that allows you to control the slider with buttons."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "slider-with-buttons-0.0.1.tar.gz", hash = "sha256:cebd7856268f72499d94b37bdfe39de3f9428235494506e3b5fce412782a4c03"},
+    {file = "slider_with_buttons-0.0.1-py3-none-any.whl", hash = "sha256:523f9973edeb64b96f050011e46113c8a093ac23b2830ff7e3657e615cb0a6de"},
+]
+
+[package.dependencies]
+streamlit = ">=0.63"
+
+[package.extras]
+devel = ["playwright (==1.39.0)", "pytest (==7.4.0)", "pytest-playwright-snapshot (==1.0)", "pytest-rerunfailures (==12.0)", "requests (==2.31.0)", "wheel"]
+
+[[package]]
 name = "smmap"
 version = "5.0.1"
 description = "A pure Python implementation of a sliding window memory map manager"
@@ -1578,4 +1595,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "238dad7aba7e9de808e64e2ee58538564f4017284edcb9a13adb0f4dacc2e691"
+content-hash = "8412f44ed842ce336a2bee920add6c3be33dc6659ff86a8afb6241b2b8f8f8f1"
