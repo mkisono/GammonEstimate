@@ -57,11 +57,7 @@ def similar_position(df):
     top_10 = similarity.sort_values(
         'similarity', ascending=False).head(10).index
     # pick a random position from the top 10
-    query_params = {
-        'id': [str(random.choice(top_10[1:]))]
-    }
-    st.experimental_set_query_params(**query_params)
-    init_state(df)
+    next_position(str(random.choice(top_10[1:])))
 
 
 def estimate_rate(name, label, value):
