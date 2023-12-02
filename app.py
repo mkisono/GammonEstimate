@@ -57,6 +57,7 @@ def similar_position(df):
     top_10 = similarity.sort_values(
         'similarity', ascending=False).head(10).index
     # pick a random position from the top 10
+    # exclude the current position
     next_position(str(random.choice(top_10[1:])))
 
 
