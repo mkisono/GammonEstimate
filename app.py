@@ -143,9 +143,7 @@ if st.session_state['game_state'] == 'guess':
 
 if st.session_state['game_state'] == 'review':
     show_analysis(df)
-    col1, col2, col3 = st.columns([4, 1, 1])
-    with col1:
-        st.write('Next position: ')
+    _, col2, col3 = st.columns([4, 1, 1])
     with col2:
         st.button('Similar', on_click=similar_position,
                   args=(df,), type='secondary')
