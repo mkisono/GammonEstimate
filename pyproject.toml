@@ -14,11 +14,11 @@ matplotlib = "^3.8.2"
 streamlit-backgammon = "^0.0.2"
 plotly = "^5.18.0"
 xgdatatools = "^0.0.1"
-pytest-watch = "^4.2.0"
 slider-with-buttons = "^0.0.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
+pytest-watch = "^4.2.0"
 
 
 [[tool.poetry.source]]
