@@ -44,6 +44,7 @@ def next_position(position_id):
     st.experimental_set_query_params(**query_params)
     init_state(df)
 
+
 def random_position(df):
     next_position(str(get_random_position(df)))
 
@@ -70,7 +71,6 @@ def draw_position(df):
     if row['ActiveP'] == -1:
         # reverse the board and flip values of position
         row['Position'] = [-i for i in row['Position'][::-1]]
-
     # render the board
     entry = {
         'position': row['Position'],
