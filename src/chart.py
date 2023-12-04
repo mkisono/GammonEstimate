@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 
 font = dict(
-    size=16,
+    size=18,
     color="rgb(49, 51, 63)"
 )
 
@@ -33,12 +33,15 @@ def _add_annotation(fig, x_axis, y_axis, text):
     )
 
 
-def _show_chart(fig, range):
+def _show_chart(fig, range, placeholder=None):
     fig.update_xaxes(visible=False, range=range)
     fig.update_yaxes(visible=False)
     fig.update_layout(barmode='stack', height=height, margin=dict(
-        l=0, r=0, b=0, t=0), showlegend=False)
-    st.plotly_chart(fig, use_container_width=True, config=config)
+        l=16, r=16, b=0, t=0), showlegend=False)
+    if placeholder:
+        placeholder.plotly_chart(fig, use_container_width=True, config=config)
+    else:
+        st.plotly_chart(fig, use_container_width=True, config=config)
 
 
 def draw_chart(x_axis, y_axis, row):
@@ -71,7 +74,7 @@ def draw_chart(x_axis, y_axis, row):
     _show_chart(fig, [0, 1])
 
 
-def draw_estimate_chart(player_win, player_g, opponent_g):
+def draw_estimate_chart(player_win, player_g, opponent_g, placeholder):
     fig = go.Figure()
     # Player G
     _add_trace(fig, player_g, 0, 'player_g', '#5fb2d5')
@@ -90,4 +93,4 @@ def draw_estimate_chart(player_win, player_g, opponent_g):
     _add_annotation(fig, player_win + (100 - player_win -
                     opponent_g) + opponent_g / 2, 0, f"{opponent_g}%")
 
-    _show_chart(fig, [0, 100])
+    _show_chart(fig, [0, 100], placeholder)
