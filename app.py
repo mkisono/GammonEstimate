@@ -62,8 +62,11 @@ def similar_position(df):
     next_position(str(random.choice(top_10[1:])))
 
 
-def estimate_rate(name, label, value):
-    st.session_state[name] = slider(label, value)
+def estimate_rate(names, values):
+    player_g, player_win, opponent_g = slider(names, values)
+    st.session_state['player_g'] = player_g
+    st.session_state['player_win'] = player_win
+    st.session_state['opponent_g'] = 100 - opponent_g
 
 
 def draw_position(df):
@@ -127,15 +130,16 @@ if 'game_state' not in st.session_state:
 
 draw_position(df)
 
+placeholder = st.empty()
+
 # user will input the win/gammon percentages
 if st.session_state['game_state'] == 'guess':
-    with st.expander('Your guess', expanded=True):
-        estimate_rate('player_win', 'Player Win %', 50)
-        estimate_rate('player_g', 'Player Gammon %', 0)
-        estimate_rate('opponent_g', 'Opponent Gammon %', 0)
+    estimate_rate(['gammon %', 'win %', 'gammon %'], [0, 50, 100])
 
 draw_estimate_chart(st.session_state['player_win'],
-                    st.session_state['player_g'], st.session_state['opponent_g'])
+                    st.session_state['player_g'],
+                    st.session_state['opponent_g'],
+                    placeholder)
 
 if st.session_state['game_state'] == 'guess':
     _, _, col3 = st.columns([4, 1, 1])
