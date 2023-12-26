@@ -1,6 +1,0 @@
-pandas
-plotly
-matplotlib
-scikit-learn
-streamlit-backgammon
-slider-with-buttons
