@@ -9,7 +9,7 @@ from backgammon import streamlit_backgammon
 from slider_with_buttons import slider
 from src.chart import draw_estimate_chart, draw_chart
 from src.param import get_id
-from src.xg import get_xgid
+from src.xg import get_xgid, get_position
 
 
 @st.cache_data()
@@ -51,9 +51,12 @@ def random_position(df):
 
 
 def similar_position(df):
-    row = df.iloc[st.session_state['index']]
+    position = get_position(st.session_state['xgid'])
+    if position is None:
+        row = df.iloc[st.session_state['index']]
+        position = row['Position']
     cosine_similarities = cosine_similarity(
-        np.array(row['Position']).reshape(1, -1), df['Position'].tolist())
+        np.array(position).reshape(1, -1), df['Position'].tolist())
     similarity = pd.DataFrame(
         cosine_similarities.transpose(), columns=['similarity'])
     top_10 = similarity.sort_values(
@@ -100,7 +103,8 @@ def show_analysis(df):
 
 
 def show_xgid(df):
-    st.code(get_xgid(df.iloc[st.session_state['index']]), language='text')
+    xgid = get_xgid(df.iloc[st.session_state['index']])
+    st.text_input('XGID', xgid, key='xgid')
 
 
 def share_button():
@@ -149,13 +153,14 @@ if st.session_state['game_state'] == 'guess':
 
 if st.session_state['game_state'] == 'review':
     show_analysis(df)
-    _, col2, col3 = st.columns([4, 1, 1])
+    col1, col2, col3 = st.columns([4, 1, 1])
+    with col1:
+        show_xgid(df)
     with col2:
         st.button('Similar', on_click=similar_position,
                   args=(df,), type='secondary')
     with col3:
         st.button('Random', on_click=random_position,
                   args=(df,), type='primary')
-    show_xgid(df)
     st.divider()
     share_button()
