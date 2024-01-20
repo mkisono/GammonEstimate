@@ -9,6 +9,7 @@ from backgammon import streamlit_backgammon
 from slider_with_buttons import slider
 from src.chart import draw_estimate_chart, draw_chart
 from src.param import get_id
+from src.xg import get_xgid
 
 
 @st.cache_data()
@@ -102,6 +103,10 @@ def show_analysis(df):
     st.table(df_equities)
 
 
+def show_xgid(df):
+    st.code(get_xgid(df.iloc[st.session_state['index']]), language='text')
+
+
 def share_button():
     url = f'https://gammonestimate.streamlit.app/?id={st.session_state["index"]}'
     components.html(
@@ -155,5 +160,6 @@ if st.session_state['game_state'] == 'review':
     with col3:
         st.button('Random', on_click=random_position,
                   args=(df,), type='primary')
+    show_xgid(df)
     st.divider()
     share_button()
