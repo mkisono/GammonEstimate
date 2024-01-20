@@ -9,6 +9,7 @@ from backgammon import streamlit_backgammon
 from slider_with_buttons import slider
 from src.chart import draw_estimate_chart, draw_chart
 from src.param import get_id
+from src.xg import get_xgid
 
 
 @st.cache_data()
@@ -50,7 +51,7 @@ def random_position(df):
 
 
 def similar_position(df):
-    row = df.iloc[st.session_state['index']].copy()
+    row = df.iloc[st.session_state['index']]
     cosine_similarities = cosine_similarity(
         np.array(row['Position']).reshape(1, -1), df['Position'].tolist())
     similarity = pd.DataFrame(
@@ -70,11 +71,7 @@ def estimate_rate(names, values):
 
 
 def draw_position(df):
-    row = df.iloc[st.session_state['index']].copy()  # Make a copy of the row
-    if row['ActiveP'] == -1:
-        # reverse the board and flip values of position
-        row['Position'] = [-i for i in row['Position'][::-1]]
-    # render the board
+    row = df.iloc[st.session_state['index']]
     entry = {
         'position': row['Position'],
         'cube': int(row['CubeB'] * row['ActiveP']),
@@ -83,7 +80,7 @@ def draw_position(df):
 
 
 def show_analysis(df):
-    row = df.iloc[st.session_state['index']].copy()
+    row = df.iloc[st.session_state['index']]
     tab_nd, tab_td = st.tabs(['No Double', 'Double/Take'])
     with tab_nd:
         draw_chart('Doubled_Eval', 'No Double', row)
@@ -100,6 +97,10 @@ def show_analysis(df):
     df_equities = pd.DataFrame(equities, columns=['Action', 'Equity'])
     df_equities.set_index('Action', inplace=True)
     st.table(df_equities)
+
+
+def show_xgid(df):
+    st.code(get_xgid(df.iloc[st.session_state['index']]), language='text')
 
 
 def share_button():
@@ -155,5 +156,6 @@ if st.session_state['game_state'] == 'review':
     with col3:
         st.button('Random', on_click=random_position,
                   args=(df,), type='primary')
+    show_xgid(df)
     st.divider()
     share_button()
