@@ -51,7 +51,7 @@ def random_position(df):
 
 
 def similar_position(df):
-    row = df.iloc[st.session_state['index']].copy()
+    row = df.iloc[st.session_state['index']]
     cosine_similarities = cosine_similarity(
         np.array(row['Position']).reshape(1, -1), df['Position'].tolist())
     similarity = pd.DataFrame(
@@ -71,11 +71,7 @@ def estimate_rate(names, values):
 
 
 def draw_position(df):
-    row = df.iloc[st.session_state['index']].copy()  # Make a copy of the row
-    if row['ActiveP'] == -1:
-        # reverse the board and flip values of position
-        row['Position'] = [-i for i in row['Position'][::-1]]
-    # render the board
+    row = df.iloc[st.session_state['index']]
     entry = {
         'position': row['Position'],
         'cube': int(row['CubeB'] * row['ActiveP']),
@@ -84,7 +80,7 @@ def draw_position(df):
 
 
 def show_analysis(df):
-    row = df.iloc[st.session_state['index']].copy()
+    row = df.iloc[st.session_state['index']]
     tab_nd, tab_td = st.tabs(['No Double', 'Double/Take'])
     with tab_nd:
         draw_chart('Doubled_Eval', 'No Double', row)
