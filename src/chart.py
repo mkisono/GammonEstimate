@@ -7,7 +7,7 @@ font = dict(
 )
 
 config = {'displayModeBar': False, 'staticPlot': True}
-height = 60
+height = 48
 
 
 def _add_trace(fig, x_axis, y_axis, name, color):
