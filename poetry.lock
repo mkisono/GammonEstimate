@@ -1449,13 +1449,13 @@ files = [
 
 [[package]]
 name = "slider-with-buttons"
-version = "0.0.5"
+version = "0.0.6"
 description = "Streamlit component that allows you to control the slider with buttons."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "slider-with-buttons-0.0.5.tar.gz", hash = "sha256:08f7754967a74eb48cb2e0ce2a8c5636b91c73cee55ac59722fd98f07eb5813a"},
-    {file = "slider_with_buttons-0.0.5-py3-none-any.whl", hash = "sha256:e3e9272b2abd2271af3137ed60ccdb758df0cf0d47cb6931bc865d29c0c63323"},
+    {file = "slider-with-buttons-0.0.6.tar.gz", hash = "sha256:015f645baf931f1587cd100c740088c371d7d0b154ae1292a81e1c7f96764e94"},
+    {file = "slider_with_buttons-0.0.6-py3-none-any.whl", hash = "sha256:6ff60b941b10bd6f9d7fc808e13a94f67e7aef47dc46d716024060571532f734"},
 ]
 
 [package.dependencies]
@@ -1754,4 +1754,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "e0fa390d3806ae34473b17ecc93efef3f6ffb55b58cc4fbd115b964763e594c6"
+content-hash = "813b68a3e89c789683e5cd6d5eeda54cdf8abed0485fe26798a0e0bd3e5154e7"
