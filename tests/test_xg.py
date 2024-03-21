@@ -1,6 +1,5 @@
-import sys
-sys.path.append('src')
-from xg import get_position
+
+from src.xg import get_position
 
 def test_get_position():
     # Test case 1: Valid xgid

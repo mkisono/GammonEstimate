@@ -1,6 +1,4 @@
-import sys
-sys.path.append('src')
-from param import get_id
+from src.param import get_id
 
 def test_get_id():
     # Test case 1: Empty query parameters
