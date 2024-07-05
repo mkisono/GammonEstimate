@@ -26,7 +26,7 @@ def init_state(df):
     st.session_state['player_win'] = 50
     st.session_state['player_g'] = 0
     st.session_state['opponent_g'] = 0
-    query_params = st.experimental_get_query_params()
+    query_params = st.query_params
     position_id = get_id(query_params, len(df))
     if position_id is not None:
         st.session_state['index'] = position_id
@@ -39,10 +39,7 @@ def show_answer():
 
 
 def next_position(position_id):
-    query_params = {
-        'id': [position_id]
-    }
-    st.experimental_set_query_params(**query_params)
+    st.query_params['id'] = [position_id]
     init_state(df)
 
 
