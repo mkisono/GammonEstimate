@@ -1541,13 +1541,13 @@ snowflake = ["snowflake-connector-python (>=2.8.0)", "snowflake-snowpark-python 
 
 [[package]]
 name = "streamlit-backgammon"
-version = "0.0.3"
+version = "0.0.4"
 description = "Streamlit component that allows you to render backgammon position"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "streamlit_backgammon-0.0.3-py3-none-any.whl", hash = "sha256:4c4e5204534297c5fdfe4bc9eddbc2012a03c6155cdddc030845d75ead2f4f51"},
-    {file = "streamlit_backgammon-0.0.3.tar.gz", hash = "sha256:4640f5ab70c61dd65e1a493c5d1e08390d2c52df8a6f9a6df0bf7524373fa34c"},
+    {file = "streamlit_backgammon-0.0.4-py3-none-any.whl", hash = "sha256:71923f275b88382437c078261897ff26fa8885ace06d7058bed48a38581ac323"},
+    {file = "streamlit_backgammon-0.0.4.tar.gz", hash = "sha256:ddba797c91f8c0f201a54ca6720498d1c5e1648fa2dadf78781ed5688d85ec0e"},
 ]
 
 [package.dependencies]
@@ -1747,4 +1747,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "868510574fc531142fac77b1231e57e9b5fff3ab9114b84898d1dc5652e05199"
+content-hash = "28f1b1618e8cbd3c7f27059c96efebf15fcb63602d2062d0c3f06532d1a6949b"
