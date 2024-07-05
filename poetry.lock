@@ -1540,6 +1540,23 @@ watchdog = {version = ">=2.1.5,<5", markers = "platform_system != \"Darwin\""}
 snowflake = ["snowflake-connector-python (>=2.8.0)", "snowflake-snowpark-python (>=0.9.0)"]
 
 [[package]]
+name = "streamlit-backgammon"
+version = "0.0.4"
+description = "Streamlit component that allows you to render backgammon position"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "streamlit_backgammon-0.0.4-py3-none-any.whl", hash = "sha256:71923f275b88382437c078261897ff26fa8885ace06d7058bed48a38581ac323"},
+    {file = "streamlit_backgammon-0.0.4.tar.gz", hash = "sha256:ddba797c91f8c0f201a54ca6720498d1c5e1648fa2dadf78781ed5688d85ec0e"},
+]
+
+[package.dependencies]
+streamlit = ">=0.63"
+
+[package.extras]
+devel = ["playwright (==1.39.0)", "pytest (==7.4.0)", "pytest-playwright-snapshot (==1.0)", "pytest-rerunfailures (==12.0)", "requests (==2.31.0)", "wheel"]
+
+[[package]]
 name = "tenacity"
 version = "8.5.0"
 description = "Retry code until it succeeds"
@@ -1730,4 +1747,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "7a266198b58a1b7036444acb7bdca913a438fc358083bd9e36062094f56a5c90"
+content-hash = "28f1b1618e8cbd3c7f27059c96efebf15fcb63602d2062d0c3f06532d1a6949b"
