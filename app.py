@@ -122,7 +122,8 @@ def share_button():
 
 st.set_page_config(
     page_title='Gammon Estimate',
-    page_icon=':game_die:'
+    page_icon=':game_die:',
+    layout='wide',
 )
 
 df = load_data()
