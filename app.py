@@ -1,4 +1,6 @@
 import random
+from importlib.metadata import version
+
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -148,6 +150,7 @@ if st.session_state['game_state'] == 'guess':
     _, _, col3 = st.columns([4, 1, 1])
     with col3:
         st.button('Guess', on_click=show_answer, type='primary')
+    st.write(version('streamlit-backgammon'))
 
 if st.session_state['game_state'] == 'review':
     show_analysis(df)
